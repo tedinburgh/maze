@@ -26,8 +26,8 @@ class RandomGoody(Goody):
                 possibilities.append(direction)
         return random.choice(possibilities)
 
-class YourGoody(Goody):
-    ''' Your Goody implementation. Please change the name of this class to make it unique! '''
+class GreedyGoody(Goody):
+    ''' A goddy that pings once and then walks towards the other goody.  '''
 
     last_ping_response = None
 
@@ -65,3 +65,7 @@ class YourGoody(Goody):
         print(len_and_dirs)
         
         return len_and_dirs[0][0]
+
+
+class YourGoody(Goody):
+    ''' Your Goody implementation. Please change the name of this class to make it unique! '''
