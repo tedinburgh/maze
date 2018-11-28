@@ -67,5 +67,54 @@ class GreedyGoody(Goody):
         return len_and_dirs[0][0]
 
 
-class YourGoody(Goody):
-    ''' Your Goody implementation. Please change the name of this class to make it unique! '''
+class TopRightGoody(Goody):
+    ''' A goddy that tries to the top right corner.  '''
+
+    pos = None
+
+    def take_turn(self, obstruction, _ping_response):
+        ''' Ignore any ping information, just choose a random direction to walk in, or ping '''
+        if self.pos == UP:
+            self.pos=DOWN
+        elif self.pos == DOWN:
+            self.pos=UP
+        elif self.pos == LEFT:
+            self.pos=RIGHT
+        elif self.pos == RIGHT:
+            self.pos=LEFT
+        possibilities = []
+        for direction in [UP, RIGHT]: # STEP.keys()
+            if not obstruction[direction] and direction != self.pos:
+                possibilities.append(direction)
+        if len(possibilities) != 0:
+            self.pos = random.choice(possibilities)
+            return self.pos
+        else:
+            for direction in [DOWN, LEFT]: # STEP.keys()
+                if not obstruction[direction] and direction != self.pos:
+                    possibilities.append(direction)
+            if len(possibilities) !=0:
+                self.pos = random.choice(possibilities)
+                return self.pos
+            else:
+                return STAY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
